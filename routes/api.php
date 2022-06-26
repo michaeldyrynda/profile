@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth:api'], function () {
         return [
             'app' => config('app.name'),
             'php' => phpversion(),
+            'laravel' => app()->version(),
             'memory' => memory_get_peak_usage(),
         ];
     });
