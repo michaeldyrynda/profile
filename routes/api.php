@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,15 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'auth:api'], function () {
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
-
-    Route::get('/profile', function () {
-        return [
-            'app' => config('app.name'),
-            'php' => phpversion(),
-            'memory' => memory_get_peak_usage(),
-        ];
-    });
+    Route::get('/user', UserController::class);
+    Route::get('/profile', ProfileController::class);
 });
